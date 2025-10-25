@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración Google Sheets - HouseLySocial</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .step {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .step h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .warning {
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+        .success {
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        .sheet-structure {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏨 Configuración Google Sheets para HouseLySocial</h1>
+        
+        <div class="step">
+            <h3>📋 Paso 1: Crear Google Sheet</h3>
+            <p>1. Ve a <a href="https://sheets.google.com" target="_blank">Google Sheets</a></p>
+            <p>2. Crea una nueva hoja de cálculo</p>
+            <p>3. Nómbrala "HouseLySocial - Disponibilidad"</p>
+            <p>4. Copia el ID de la URL (la parte larga entre /d/ y /edit)</p>
+            <div class="highlight">
+                <strong>Ejemplo de URL:</strong><br>
+                https://docs.google.com/spreadsheets/d/<strong>1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms</strong>/edit
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>📊 Paso 2: Crear las Hojas</h3>
+            <p>Crea 3 hojas en tu Google Sheet:</p>
+            
+            <div class="sheet-structure">
+                <h4>Hoja 1: "Propiedades"</h4>
+                <table>
+                    <tr><th>ID</th><th>Nombre</th><th>Ciudad</th><th>Precio</th><th>Capacidad</th><th>Estado</th></tr>
+                    <tr><td>1</td><td>Apartamento Cartagena</td><td>Cartagena</td><td>$450.000</td><td>4</td><td>Activo</td></tr>
+                    <tr><td>2</td><td>Penthouse Medellín</td><td>Medellín</td><td>$380.000</td><td>6</td><td>Activo</td></tr>
+                </table>
+            </div>
+
+            <div class="sheet-structure">
+                <h4>Hoja 2: "Disponibilidad"</h4>
+                <table>
+                    <tr><th>Propiedad_ID</th><th>Fecha</th><th>Estado</th><th>Precio_Especial</th></tr>
+                    <tr><td>1</td><td>2024-12-20</td><td>Reservado</td><td></td></tr>
+                    <tr><td>1</td><td>2024-12-21</td><td>Reservado</td><td></td></tr>
+                    <tr><td>2</td><td>2024-12-15</td><td>Bloqueado</td><td></td></tr>
+                </table>
+            </div>
+
+            <div class="sheet-structure">
+                <h4>Hoja 3: "Reservas"</h4>
+                <table>
+                    <tr><th>ID</th><th>Propiedad_ID</th><th>Huésped</th><th>Email</th><th>Check-in</th><th>Check-out</th><th>Estado</th></tr>
+                    <tr><td>RES001</td><td>1</td><td>María González</td><td>maria@email.com</td><td>2024-12-20</td><td>2024-12-22</td><td>Confirmado</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>🔑 Paso 3: Configurar Google Cloud Console</h3>
+            <p>1. Ve a <a href="https://console.cloud.google.com" target="_blank">Google Cloud Console</a></p>
+            <p>2. Crea un nuevo proyecto o selecciona uno existente</p>
+            <p>3. Habilita la Google Sheets API</p>
+            <p>4. Crea credenciales (API Key)</p>
+            <p>5. Copia tu API Key</p>
+        </div>
+
+        <div class="step">
+            <h3>⚙️ Paso 4: Configurar el Código</h3>
+            <p>Actualiza el archivo <code>sheets-config.js</code> con tus datos:</p>
+            <div class="code-block">
+// Reemplaza con tu ID de Google Sheet
+SPREADSHEET_ID: 'TU_SPREADSHEET_ID_AQUI',
+
+// Reemplaza con tu API Key
+apiKey: 'TU_API_KEY_AQUI',
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>🔒 Paso 5: Configurar Permisos</h3>
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> Para que funcione en producción, necesitarás:
+                <ul>
+                    <li>Configurar OAuth 2.0 para autenticación</li>
+                    <li>Restringir el acceso a tu dominio</li>
+                    <li>Usar un backend para manejar las credenciales de forma segura</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>📱 Paso 6: Integrar en tu Aplicación</h3>
+            <p>Agrega estos archivos a tu proyecto:</p>
+            <div class="code-block">
+&lt;!-- En tu index.html --&gt;
+&lt;script src="sheets-config.js"&gt;&lt;/script&gt;
+&lt;script src="https://apis.google.com/js/api.js"&gt;&lt;/script&gt;
+            </div>
+        </div>
+
+        <div class="success">
+            <h3>✅ ¡Listo!</h3>
+            <p>Ahora tu aplicación puede:</p>
+            <ul>
+                <li>📊 Leer propiedades desde Google Sheets</li>
+                <li>📅 Verificar disponibilidad en tiempo real</li>
+                <li>📝 Crear nuevas reservas</li>
+                <li>🔄 Actualizar disponibilidad automáticamente</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🚀 Ventajas de Google Sheets</h3>
+            <ul>
+                <li><strong>Fácil de usar:</strong> No necesitas base de datos compleja</li>
+                <li><strong>Colaborativo:</strong> Múltiples usuarios pueden editar</li>
+                <li><strong>Historial:</strong> Google guarda versiones automáticamente</li>
+                <li><strong>Accesible:</strong> Se puede editar desde cualquier dispositivo</li>
+                <li><strong>Gratis:</strong> No hay costos adicionales</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

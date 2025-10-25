@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "title": "Apartamento de lujo en Cartagena",
+    "city": "Cartagena",
+    "price": "$450.000 / noche",
+    "description": "Frente al mar, con vista panorámica y piscina privada.",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "capacity": 4,
+    "available": true,
+    "blockedDates": [
+      "2024-12-20",
+      "2024-12-21",
+      "2024-12-22",
+      "2024-12-25",
+      "2024-12-26"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Penthouse moderno en Medellín",
+    "city": "Medellín",
+    "price": "$380.000 / noche",
+    "description": "Ubicado en El Poblado, ideal para estancias cortas.",
+    "image": "https://images.unsplash.com/photo-1560448075-bb485b1662b6?auto=format&fit=crop&w=800&q=80",
+    "capacity": 6,
+    "available": true,
+    "blockedDates": [
+      "2024-12-15",
+      "2024-12-16",
+      "2024-12-30",
+      "2024-12-31"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Casa colonial en Bogotá",
+    "city": "Bogotá",
+    "price": "$320.000 / noche",
+    "description": "Casa histórica en La Candelaria, perfecta para conocer la cultura.",
+    "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",
+    "capacity": 2,
+    "available": true,
+    "blockedDates": [
+      "2024-12-24",
+      "2024-12-25",
+      "2024-12-31"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Villa con piscina en Cali",
+    "city": "Cali",
+    "price": "$280.000 / noche",
+    "description": "Villa moderna con piscina privada y jardín tropical.",
+    "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+    "capacity": 8,
+    "available": true
+  },
+  {
+    "id": 5,
+    "title": "Loft industrial en Barranquilla",
+    "city": "Barranquilla",
+    "price": "$250.000 / noche",
+    "description": "Loft moderno en el centro histórico, cerca del malecón.",
+    "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
+    "capacity": 3,
+    "available": true
+  },
+  {
+    "id": 6,
+    "title": "Casa de playa en Santa Marta",
+    "city": "Santa Marta",
+    "price": "$400.000 / noche",
+    "description": "Casa frente al mar con acceso directo a la playa.",
+    "image": "https://images.unsplash.com/photo-1520637836862-4d197d17c4a4?auto=format&fit=crop&w=800&q=80",
+    "capacity": 6,
+    "available": true
+  },
+  {
+    "id": 7,
+    "title": "Apartamento ejecutivo en Manizales",
+    "city": "Manizales",
+    "price": "$200.000 / noche",
+    "description": "Apartamento moderno con vista a la ciudad y montañas.",
+    "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+    "capacity": 4,
+    "available": true
+  },
+  {
+    "id": 8,
+    "title": "Casa rural en Pereira",
+    "city": "Pereira",
+    "price": "$180.000 / noche",
+    "description": "Casa campestre rodeada de naturaleza, ideal para descansar.",
+    "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",
+    "capacity": 5,
+    "available": true
+  }
+]
