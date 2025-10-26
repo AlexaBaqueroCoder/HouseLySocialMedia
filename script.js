@@ -76,9 +76,12 @@ function renderProperties(properties) {
       <div class="property-info">
         <h3>${property.title}</h3>
         <p>${property.city}</p>
-        <p class="price">${property.price}</p>
+        <p class="price">💰${property.price} COP</p>
         <p><strong>Capacidad:</strong> ${property.capacity} huéspedes</p>
         <p>${property.description}</p>
+        <button class="reserve-btn" data-id="${property.id}" data-name="${property.name}">
+            Reservar
+        </button>
       </div>
     </div>
   `).join('');
@@ -313,4 +316,65 @@ function showMessage(message, type) {
       messageDiv.remove();
     }
   }, 5000);
+}
+
+// === FORMULARIO EMERGENTE (MODAL) ===
+function openReservationForm(propertyId, propertyName) {
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h2>Reservar: ${propertyName}</h2>
+      <form id="reservationForm">
+        <input type="hidden" id="propertyId" value="${propertyId}" />
+        <label>Nombre completo:</label>
+        <input type="text" id="fullName" required />
+        <label>Teléfono:</label>
+        <input type="tel" id="phone" required />
+        <label>Correo electrónico:</label>
+        <input type="email" id="email" required />
+        <label>Método de pago:</label>
+        <select id="paymentMethod" required>
+          <option value="">Seleccionar...</option>
+          <option value="Nequi">Nequi</option>
+          <option value="Daviplata">Daviplata</option>
+          <option value="Stripe">Stripe</option>
+        </select>
+        <button type="submit">Enviar reserva</button>
+        <button type="button" id="closeModal">Cancelar</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  // Cerrar modal
+  document.getElementById("closeModal").addEventListener("click", () => modal.remove());
+
+  // Enviar formulario
+  document.getElementById("reservationForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const data = {
+      propertyId: document.getElementById("propertyId").value,
+      fullName: document.getElementById("fullName").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      paymentMethod: document.getElementById("paymentMethod").value,
+      status: "Pendiente de pago"
+    };
+
+    sendReservationToSheets(data);
+    modal.remove();
+  });
+}
+
+// === ENVIAR A GOOGLE SHEETS ===
+function sendReservationToSheets(data) {
+  fetch("https://script.google.com/macros/s/TU_URL_DEPLOY_DEL_APPS_SCRIPT/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+    .then(() => alert("✅ Reserva enviada. Te contactaremos para confirmar el pago."))
+    .catch(err => console.error("Error enviando reserva:", err));
 }
